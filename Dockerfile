@@ -8,6 +8,7 @@ RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
         lib32stdc++6 \
         lib32gcc1 \
+        libcurl3:i386 \
         curl && \
         apt-get -y upgrade && \
         apt-get clean autoclean && \
