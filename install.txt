@@ -1,0 +1,8 @@
+@sSteamCmdForcePlatformType linux
+@NoPromptForPassword 1
+@ShutdownOnFailedCommand 1
+login STEAM_USERNAME STEAM_PASSWORD STEAM_OTP
+force_install_dir /opt/steam/starbound
+app_info_update 1
+app_update 211820 validate
+quit
