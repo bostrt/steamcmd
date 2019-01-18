@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if we've already installed the Starbound.
-if [ ! -f "/opt/steam/starbound" ]; then
+if [ -f "/opt/steam/starbound" ]; then
 	echo "Starbound installed. Starting..."
 	exit 0	
 fi
