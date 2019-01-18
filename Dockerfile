@@ -1,8 +1,7 @@
 ############################################################
-# Dockerfile that contains SteamCMD
+# Dockerfile that contains steamCMD
 ############################################################
 FROM debian:stretch
-LABEL maintainer="walentinlamonos@gmail.com"
 
 RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
@@ -16,11 +15,10 @@ RUN apt-get update && apt-get install -y \
         rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Switch to user steam
-# USER steam
-USER 1001
+ENV HOME /opt/steam
 
-# Create Directory for SteamCMD
-# Download SteamCMD
+# Create Directory for steamCMD
+# Download steamCMD
 # Extract and delete archive
 RUN mkdir -p /opt/steam/steamcmd && cd /opt/steam/steamcmd && \
         curl -o steamcmd_linux.tar.gz "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" && \
@@ -31,7 +29,3 @@ RUN chgrp -R 0 /opt/steam && \
     chmod -R g=u /opt/steam
 
 VOLUME /opt/steam/steamcmd
-
-RUN chmod g=u /etc/passwd
-ENTRYPOINT [ "uid_entrypoint" ]
-
