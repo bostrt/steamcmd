@@ -25,11 +25,13 @@ RUN mkdir -p /opt/steam/steamcmd && cd /opt/steam/steamcmd && \
         tar zxf steamcmd_linux.tar.gz && \
         rm steamcmd_linux.tar.gz
 
+COPY otp /otp
 COPY install.txt /opt/steam/install.txt
 COPY install_game.sh /opt/steam/install_game.sh
 
 RUN chgrp -R 0 /opt/steam && \
-    chmod -R g=u /opt/steam
+    chmod -R g=u /opt/steam && \
+    chmod -R g=u /otp
 
 VOLUME /opt/steam/steamcmd
 
