@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 	echo "Some error occurred during installation of Starbound. If you have Steam Guard configured, please execute the following command to enter your OTP token:"
         echo "$ oc exec <pod> otp <token>"
 	echo "Timing out in 60 seconds..."
-	mkfifo -u 600 /opt/steam/otp
+	mkfifo -m 600 /opt/steam/otp
         token=$(timeout 60 cat /opt/steam/otp)	
 	if [ ! -z "$token" ]; then
 		sed -i "s/STEAM_OTP/$token/g" /opt/steam/install.txt
