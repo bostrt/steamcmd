@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
 
 # Switch to user steam
 # USER steam
+USER 1001
 
 # Create Directory for SteamCMD
 # Download SteamCMD
@@ -30,3 +31,7 @@ RUN chgrp -R 0 /opt/steam && \
     chmod -R g=u /opt/steam
 
 VOLUME /opt/steam/steamcmd
+
+RUN chmod g=u /etc/passwd
+ENTRYPOINT [ "uid_entrypoint" ]
+
