@@ -15,18 +15,20 @@ RUN apt-get update && apt-get install -y \
         apt-get -y upgrade && \
         apt-get clean autoclean && \
         apt-get autoremove -y && \
-        rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-        useradd -m steam
+        rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Switch to user steam
-USER steam
+# USER steam
+
+RUN chgrp -R 0 /opt/steam && \
+    chmod -R g=u /opt/steam
 
 # Create Directory for SteamCMD
 # Download SteamCMD
 # Extract and delete archive
-RUN mkdir -p /home/steam/steamcmd && cd /home/steam/steamcmd && \
+RUN mkdir -p /opt/steam/steamcmd && cd /opt/steam/steamcmd && \
         curl -o steamcmd_linux.tar.gz "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" && \
         tar zxf steamcmd_linux.tar.gz && \
         rm steamcmd_linux.tar.gz
 
-VOLUME /home/steam/steamcmd
+VOLUME /opt/steam/steamcmd
