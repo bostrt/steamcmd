@@ -29,7 +29,7 @@ if [ $? -ne 0 ]; then
         token=$(timeout 60 cat /opt/steam/otp)	
 	if [ ! -z "$token" ]; then
 		sed -i "s/STEAM_OTP/$token/g" /opt/steam/install.txt
-		/opt/steam/steamcmd/steamcmd +runscript /opt/steam/install.txt
+		/opt/steam/steamcmd/steamcmd.sh +runscript /opt/steam/install.txt
 	fi
 fi
 
