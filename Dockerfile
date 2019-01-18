@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y \
 # Switch to user steam
 # USER steam
 
-RUN chgrp -R 0 /opt/steam && \
+RUN mkdir -p /opt/steam && \
+    chgrp -R 0 /opt/steam && \
     chmod -R g=u /opt/steam
 
 # Create Directory for SteamCMD
