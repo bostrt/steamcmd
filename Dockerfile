@@ -4,10 +4,7 @@
 FROM debian:stretch
 LABEL maintainer="walentinlamonos@gmail.com"
 
-# Install, update & upgrade packages
-# Create user for the server
-# This also creates the home directory we later need
-# Clean TMP, apt-get cache and other stuff to make the image smaller
+RUN dpkg --add-architecture i386
 RUN apt-get update && apt-get install -y \
         lib32stdc++6 \
         lib32gcc1 \
