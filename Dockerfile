@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
 # Switch to user steam
 ENV HOME /opt/steam
 
+EXPOSE 21025
+
 # Create Directory for steamCMD
 # Download steamCMD
 # Extract and delete archive
