@@ -33,4 +33,9 @@ if [ $? -ne 0 ]; then
 	fi
 fi
 
+echo 'Starting starbound...'
+cd /opt/steam/starbound/linux
+./starbound_server 2>&1 &
 
+child=$!
+wait "$child"
